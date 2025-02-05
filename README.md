@@ -15,6 +15,12 @@ pip install apache-airflow
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
+```bash
+conda create -n python3.10 python=3.10
+conda activate python3.10
+pip install apache-airflow
+```
+
 ##### For development
 
 ```bash

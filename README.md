@@ -34,3 +34,10 @@ airflow db init
 airflow webserver -p 8080
 airflow scheduler
 ```
+
+### Common Types of Operators
+
+- PythonOperator: Runs python functions
+- BashOperator: Execute bash commands
+- EmailOperator: Send emails
+- SimpleHttpOperator: Make HTTP requests

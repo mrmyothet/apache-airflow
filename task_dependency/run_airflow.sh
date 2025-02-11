@@ -1,3 +1,3 @@
-export AIRFLOW_HOME=/Users/macos/repos/apache-airflow
+export AIRFLOW_HOME=/Users/macos/repos/apache-airflow/task_dependency
 export AIRFLOW__CORE__LOAD_EXAMPLES=False
 airflow standalone

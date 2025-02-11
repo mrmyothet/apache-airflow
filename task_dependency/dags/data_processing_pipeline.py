@@ -1,12 +1,29 @@
+import pandas as pd
+
 from datetime import datetime, timedelta
 from airflow.utils.dates import days_ago
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
 
 default_args = {
     "owner": "airflow",
 }
+
+
+def remove_null_values():
+    df = pd.read_csv(
+        "/Users/macos/repos/apache-airflow/task_dependency/datasets/ecommerce_marketing.csv"
+    )
+    df = df.dropna()
+    print(df)
+
+    df.to_csv(
+        "/Users/macos/repos/apache-airflow/task_dependency/datasets/ecommerce_marketing_cleaned.csv",
+        index=False,
+    )
+
 
 with DAG(
     dag_id="data_processing_pipeline",
@@ -20,3 +37,9 @@ with DAG(
         task_id="check_file_exists",
         bash_command="test -f /Users/macos/repos/apache-airflow/task_dependency/datasets/ecommerce_marketing.csv || exit 1",
     )
+
+    clean_data = PythonOperator(
+        task_id="remove_null_values", python_callable=remove_null_values
+    )
+
+check_file_exists.set_downstream(clean_data)

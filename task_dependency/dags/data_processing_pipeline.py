@@ -111,9 +111,18 @@ with DAG(
 
     load_data = PythonOperator(task_id="load_data", python_callable=insert_into_sqlite)
 
-check_file_exists.set_downstream(clean_data)
-clean_data.set_downstream(aggregate_data)
-aggregate_data.set_downstream(drop_table_if_exists)
+# check_file_exists.set_downstream(clean_data)
+# clean_data.set_downstream(aggregate_data)
+# aggregate_data.set_downstream(drop_table_if_exists)
 
-create_table.set_upstream(drop_table_if_exists)
-load_data.set_upstream(create_table)
+# create_table.set_upstream(drop_table_if_exists)
+# load_data.set_upstream(create_table)
+
+(
+    check_file_exists
+    >> clean_data
+    >> aggregate_data
+    >> drop_table_if_exists
+    >> create_table
+    >> load_data
+)

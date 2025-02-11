@@ -178,3 +178,5 @@ standalone_admin_password.txt
 webserver_config.py
 
 processed
+
+.DS_Store

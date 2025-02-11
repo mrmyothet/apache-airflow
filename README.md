@@ -42,29 +42,28 @@ airflow scheduler
 - EmailOperator: Send emails
 - SimpleHttpOperator: Make HTTP requests
 
-
 ### Install Conda on WSL
 
-```bash 
+```bash
 wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
 
 bash Anaconda3-2024.10-1-Linux-x86_64.sh
 
 ```
 
-### Install apache-airflow 
+### Install apache-airflow
 
 ```bash
 conda create -n airflow_env python=3.11.8
 
 pip install apache-airflow
-pip install pandas 
+pip install pandas
 
 sudo apt update && sudo apt install sqlite3 libsqlite3-dev
 ```
 
 ```bash
-airflow scheduler 
+airflow scheduler
 
 airflow users create \
     --username admin \
@@ -76,4 +75,16 @@ airflow users create \
 
 
 airflow webserver
+```
+
+---
+
+### Check data inside sqlite db
+
+```bash
+sqlite3 my_sqlite.db
+.databases
+.tables
+.schema aggregated_ecommerce_data
+
 ```

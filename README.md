@@ -49,4 +49,31 @@ airflow scheduler
 wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
 
 bash Anaconda3-2024.10-1-Linux-x86_64.sh
+
+```
+
+### Install apache-airflow 
+
+```bash
+conda create -n airflow_env python=3.11.8
+
+pip install apache-airflow
+pip install pandas 
+
+sudo apt update && sudo apt install sqlite3 libsqlite3-dev
+```
+
+```bash
+airflow scheduler 
+
+airflow users create \
+    --username admin \
+    --password admin \
+    --firstname Airflow \
+    --lastname Admin \
+    --role Admin \
+    --email admin@example.com
+
+
+airflow webserver
 ```

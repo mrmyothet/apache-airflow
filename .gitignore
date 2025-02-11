@@ -180,3 +180,5 @@ webserver_config.py
 processed
 
 .DS_Store
+
+task_dependency/database/my_sqlite.db
